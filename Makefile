@@ -8,6 +8,12 @@ WEBPACK=node_modules/webpack/bin/webpack.js
 
 build: scripts templates
 
+clean:
+	$(HEADER)
+	rm -fr public
+	rm -f npm-debug.log
+	$(FOOTER)
+
 scripts: tree
 	$(HEADER)
 	$(WEBPACK) --bail -p client/scripts/main.js public/scripts/main.js > /dev/null
