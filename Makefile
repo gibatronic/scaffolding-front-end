@@ -6,6 +6,8 @@ WEBPACK=node_modules/webpack/bin/webpack.js
 
 .SILENT:
 
+build: scripts templates
+
 scripts: tree
 	$(HEADER)
 	$(WEBPACK) --bail -p client/scripts/main.js public/scripts/main.js > /dev/null
