@@ -1,7 +1,8 @@
 {
   "devDependencies": {
     "html-minifier": "^0.7.2",
-    "mu2": "https://github.com/gibatronic/Mu/archive/v0.6.1.tar.gz"
+    "mu2": "https://github.com/gibatronic/Mu/archive/v0.6.1.tar.gz",
+    "webpack": "^1.8.0"
   },
   "private": "true",
   "version": "0.0.0"
