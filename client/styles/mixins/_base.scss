@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+}
+
+a, button {
+  outline: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body, button, h1, h2, h3, h4, h5, h6, hr, ol, p, ul {
+  margin: 0;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+}
+
+button, ol, ul {
+  padding: 0;
+}
+
+body {
+  background: rgb(255, 255, 255);
+}
+
+button {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+html {
+  color: rgb(0, 0, 0);
+  font-family: $helvetica;
+  font-size: 16px;
+  line-height: $golden;
+  -webkit-font-smoothing: antialiased;
+}
