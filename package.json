@@ -4,6 +4,7 @@
     "html-minifier": "^0.7.2",
     "mu2": "https://github.com/gibatronic/Mu/archive/v0.6.1.tar.gz",
     "node-sass": "^3.1.2",
+    "vigilia": "^0.1.0",
     "webpack": "^1.8.0"
   },
   "private": "true",
