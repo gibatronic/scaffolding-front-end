@@ -26,6 +26,9 @@ images: tree
 	$(IMAGEMIN) client/images public/images
 	$(FOOTER)
 
+install:
+	npm install
+
 run: build
 	$(HTTP_SERVER) -p $(PORT)
 
