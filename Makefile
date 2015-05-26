@@ -35,8 +35,8 @@ styles: tree
 
 templates: tree
 	$(HEADER)
-	$(MUSTACHE) --view "`cat package.json`" --root client/templates main.html > public/main.html
-	$(HTML_MINIFIER) --collapse-whitespace --output public/main.html --remove-comments public/main.html
+	$(MUSTACHE) --view "`cat package.json`" --root client/templates main.html > public/index.html
+	$(HTML_MINIFIER) --collapse-whitespace --output public/index.html --remove-comments public/index.html
 	$(FOOTER)
 
 tree:
