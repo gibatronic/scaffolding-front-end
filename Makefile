@@ -52,5 +52,5 @@ tree:
 	mkdir -p public/styles
 	$(FOOTER)
 
-watch:
+watch: build
 	$(VIGILIA) 'client/images/**/*':'make images' 'client/scripts/**/*.js':'make scripts' 'client/styles/**/*.scss':'make styles' 'client/templates/**/*.html':'make templates'
