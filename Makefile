@@ -4,6 +4,7 @@ HEADER=printf '  $@... '
 HTML_MINIFIER=node_modules/html-minifier/cli.js
 MUSTACHE=node_modules/mu2/bin/mu
 SASS=node_modules/node-sass/bin/node-sass
+VIGILIA=node_modules/vigilia/bin/vigilia
 WEBPACK=node_modules/webpack/bin/webpack.js
 
 .SILENT:
@@ -37,3 +38,6 @@ tree:
 	mkdir -p public/scripts
 	mkdir -p public/styles
 	$(FOOTER)
+
+watch:
+	$(VIGILIA) 'client/scripts/**/*.js':'make scripts' 'client/styles/**/*.scss':'make styles' 'client/templates/**/*.html':'make templates'
