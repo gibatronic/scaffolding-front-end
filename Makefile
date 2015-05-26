@@ -3,6 +3,7 @@ FOOTER=printf $(if $$? = 0, '\x1b[32mDONE', '\x1b[31mERROR')"\x1b[0m\n"
 HEADER=printf '  $@... '
 HTML_MINIFIER=node_modules/html-minifier/cli.js
 HTTP_SERVER=node_modules/http-server/bin/http-server
+IMAGEMIN=node_modules/imagemin/cli.js
 MUSTACHE=node_modules/mu2/bin/mu
 SASS=node_modules/node-sass/bin/node-sass
 VIGILIA=node_modules/vigilia/bin/vigilia
@@ -18,6 +19,11 @@ clean:
 	$(HEADER)
 	rm -fr public
 	rm -f npm-debug.log
+	$(FOOTER)
+
+images: tree
+	$(HEADER)
+	$(IMAGEMIN) client/images public/images
 	$(FOOTER)
 
 run: build
@@ -41,9 +47,10 @@ templates: tree
 
 tree:
 	$(HEADER)
+	mkdir -p public/images
 	mkdir -p public/scripts
 	mkdir -p public/styles
 	$(FOOTER)
 
 watch:
-	$(VIGILIA) 'client/scripts/**/*.js':'make scripts' 'client/styles/**/*.scss':'make styles' 'client/templates/**/*.html':'make templates'
+	$(VIGILIA) 'client/images/**/*':'make images' 'client/scripts/**/*.js':'make scripts' 'client/styles/**/*.scss':'make styles' 'client/templates/**/*.html':'make templates'
