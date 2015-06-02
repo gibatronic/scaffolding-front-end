@@ -13,7 +13,7 @@ PORT?=3000
 
 .SILENT:
 
-build: scripts styles templates
+build: images scripts styles templates
 
 clean:
 	$(HEADER)
