@@ -39,7 +39,8 @@ scripts: tree
 
 styles: tree
 	$(HEADER)
-	$(SASS) --include-path $(BOURBON) --output public/styles --output-style compressed --quiet client/styles/main.scss public/styles/main.css
+	$(SASS) --include-path $(BOURBON) --output public/styles --output-style compressed --quiet client/styles/major.scss public/styles/major.css
+	$(SASS) --include-path $(BOURBON) --output public/styles --output-style compressed --quiet client/styles/minor.scss public/styles/minor.css
 	$(FOOTER)
 
 templates: tree
