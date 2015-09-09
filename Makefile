@@ -1,3 +1,14 @@
+.PHONY: build \
+				clean \
+				images \
+				install \
+				run \
+				scripts \
+				styles \
+				templates \
+				tree \
+				watch
+
 .SILENT:
 
 build: images scripts styles templates
