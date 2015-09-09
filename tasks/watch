@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+node_modules/vigilia/bin/vigilia 'client/images/**/*':'make images' \
+                                 'client/scripts/**/*.js':'make scripts' \
+                                 'client/styles/**/*.scss':'make styles' \
+                                 'client/templates/**/*.html':'make templates'

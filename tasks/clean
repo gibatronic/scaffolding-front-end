@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+. tasks/library
+
+main() {
+  rm -fr public
+  rm -f npm-debug.log
+}
+
+header
+main &> $TASK_LOG
+footer

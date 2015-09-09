@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+. tasks/library
+
+main() {
+  node_modules/webpack/bin/webpack.js --bail -p client/scripts/main.js public/scripts/main.js
+}
+
+header
+main &> $TASK_LOG
+footer

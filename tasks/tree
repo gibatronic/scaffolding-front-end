@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+. tasks/library
+
+main() {
+  mkdir -p public/images
+  mkdir -p public/scripts
+  mkdir -p public/styles
+}
+
+header
+main &> $TASK_LOG
+footer
