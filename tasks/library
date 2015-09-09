@@ -1,0 +1,30 @@
+COLOR_BLUE='\033[34m'
+COLOR_GREEN='\033[32m'
+COLOR_RED='\033[31m'
+COLOR_RESET='\033[0m'
+CURSOR_RESET='\033[999D'
+SYMBOL_DONE='✓'
+SYMBOL_FAIL='✖'
+
+TASK_NAME=$(basename $0)
+TASK_LOG="${TASK_NAME}.log"
+
+function footer {
+  EXIT_CODE=$?
+
+  echo -en $CURSOR_RESET
+
+  if [ $EXIT_CODE == 0 ]; then
+    echo -e "${COLOR_GREEN}${SYMBOL_DONE}${COLOR_RESET}"
+  else
+    echo -e "${COLOR_RED}${SYMBOL_FAIL}${COLOR_RESET}"
+    cat $TASK_LOG
+  fi
+
+  rm $TASK_LOG
+  exit $EXIT_CODE
+}
+
+function header {
+  echo -n "  $TASK_NAME "
+}
