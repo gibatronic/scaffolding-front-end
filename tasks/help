@@ -18,6 +18,7 @@ var parse = function(error, data) {
   log('\n');
   log('  Usage:\n');
   log('    make <target>\n');
+  log('    make run [PORT=<number>]\n');
   log('\n');
   log('  Targets:\n');
   blocks.forEach(show);
