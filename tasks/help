@@ -1,0 +1,45 @@
+#!/usr/bin/env node
+
+var fs = require('fs');
+var longestCommandLength;
+var util = require('util');
+var log = process.stdout.write.bind(process.stdout);
+
+var parse = function(error, data) {
+  var blocks = data.toString().match(/#([^:]+):/g);
+
+  blocks = blocks.map(resolve);
+  longestCommandLength = blocks.slice()
+                               .sort(sortByCommandLength)
+                               .pop()
+                               .command
+                               .length;
+
+  log('\n');
+  log('  Usage:\n');
+  log('    make <target>\n');
+  log('\n');
+  log('  Targets:\n');
+  blocks.forEach(show);
+  log('\n');
+};
+
+var resolve = function(block) {
+  block = block.split(/\n+/);
+
+  return {
+    command: block[1].substr(0, block[1].length - 1),
+    description: block[0].substr(2)
+  };
+};
+
+var show = function(block) {
+  var spaces = new Array(longestCommandLength - block.command.length + 3).join(' ');
+  log(util.format('    %s%s%s\n', block.command, spaces, block.description));
+};
+
+var sortByCommandLength = function(a, b) {
+  return a.command.length - b.command.length;
+};
+
+fs.readFile('Makefile', parse);
