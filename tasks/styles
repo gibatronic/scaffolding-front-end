@@ -2,15 +2,14 @@
 
 . tasks/library
 
-main() {
-  sass major
-  sass minor
-}
-
 sass() {
   node_modules/node-sass/bin/node-sass --include-path node_modules/bourbon/app/assets/stylesheets --output public/styles --output-style compressed "client/styles/${1}.scss" "public/styles/${1}.css"
 }
 
-header
-main &> $TASK_LOG
+header major
+sass major &> $TASK_LOG
+footer
+
+header minor
+sass minor &> $TASK_LOG
 footer
