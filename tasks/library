@@ -22,9 +22,10 @@ function footer {
   fi
 
   rm $TASK_LOG
-  exit $EXIT_CODE
+  return $EXIT_CODE
 }
 
 function header {
   echo -n "  $TASK_NAME "
+  [ -n "$1" ] && echo -n "$1 "
 }
