@@ -10,7 +10,7 @@ SYMBOL_FAIL='✖'
 TASK_NAME=$(basename $0)
 TASK_LOG="${TASK_NAME}.log"
 
-function footer {
+footer() {
   EXIT_CODE=$?
 
   echo -en $CURSOR_RESET
@@ -26,7 +26,7 @@ function footer {
   return $EXIT_CODE
 }
 
-function has {
+has() {
   type "$1" &> /dev/null && return 0
 
   echo -en "${CURSOR_RESET}${COLOR_YELLOW}${SYMBOL_FAIL}${COLOR_RESET}"
@@ -36,7 +36,7 @@ function has {
   return 1
 }
 
-function header {
+header() {
   echo -n "  $TASK_NAME "
   [ -n "$1" ] && echo -n "$1 "
 }
