@@ -2,6 +2,7 @@ COLOR_BLUE='\033[34m'
 COLOR_GREEN='\033[32m'
 COLOR_RED='\033[31m'
 COLOR_RESET='\033[0m'
+COLOR_YELLOW='\033[33m'
 CURSOR_RESET='\033[999D'
 SYMBOL_DONE='✓'
 SYMBOL_FAIL='✖'
@@ -23,6 +24,16 @@ function footer {
 
   rm $TASK_LOG
   return $EXIT_CODE
+}
+
+function has {
+  type "$1" &> /dev/null && return 0
+
+  echo -en "${CURSOR_RESET}${COLOR_YELLOW}${SYMBOL_FAIL}${COLOR_RESET}"
+  echo -e "Please, make sure you have ${COLOR_BLUE}Node${COLOR_RESET} and ${COLOR_BLUE}npm${COLOR_RESET} installed." > $TASK_LOG
+  echo -e "You may get them at ${COLOR_BLUE}https://nodejs.org/${COLOR_RESET}." >> $TASK_LOG
+
+  return 1
 }
 
 function header {
