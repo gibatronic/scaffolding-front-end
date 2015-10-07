@@ -7,5 +7,5 @@ main() {
 }
 
 header
-main &> $TASK_LOG
+has npm && main &> $TASK_LOG
 footer
