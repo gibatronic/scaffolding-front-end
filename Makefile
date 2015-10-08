@@ -1,7 +1,6 @@
 .DEFAULT_GOAL := help
 
-.PHONY: all \
-				build \
+.PHONY: build \
 				clean \
 				help \
 				images \
