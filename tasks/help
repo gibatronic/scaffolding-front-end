@@ -6,5 +6,5 @@ echo '    make <target>'
 echo '    make run [PORT=<number>]'
 echo ''
 echo '  Targets:'
-node_modules/ghelp/bin/ghelp -p 4 Makefile
+node_modules/make-help/bin/make-help -p 4 Makefile
 echo ''

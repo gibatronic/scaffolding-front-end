@@ -1,10 +1,10 @@
 {
   "devDependencies": {
     "bourbon": "^4.2.2",
-    "ghelp": "0.0.2",
     "html-minifier": "^0.7.2",
     "http-server": "^0.8.0",
     "imagemin": "^3.2.0",
+    "make-help": "0.0.3",
     "mu2": "https://github.com/gibatronic/Mu/archive/v0.6.1.tar.gz",
     "node-sass": "^3.1.2",
     "vigilia": "^0.1.0",
