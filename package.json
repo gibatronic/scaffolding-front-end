@@ -5,7 +5,7 @@
     "http-server": "^0.8.0",
     "imagemin": "^3.2.0",
     "make-help": "0.0.3",
-    "mu2": "https://github.com/gibatronic/Mu/archive/v0.6.1.tar.gz",
+    "mustache": "^2.2.0",
     "node-sass": "^3.1.2",
     "vigilia": "^0.1.0",
     "webpack": "^1.8.0"

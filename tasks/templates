@@ -3,7 +3,13 @@
 . tasks/library
 
 main() {
-  node_modules/mu2/bin/mu --view "$(cat package.json)" --root client/templates main.html > public/index.html
+  local PARTIALS=$(find client/templates/partials -name *.html | paste -s -d ':' -)
+
+  if [ ! -z "$PARTIALS" ]; then
+    PARTIALS="-p ${PARTIALS/:/ -p }"
+  fi
+
+  node_modules/mustache/bin/mustache $PARTIALS package.json client/templates/main.html > public/index.html
   node_modules/html-minifier/cli.js --collapse-whitespace --output public/index.html --remove-comments public/index.html
 }
 
