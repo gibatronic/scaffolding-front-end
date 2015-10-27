@@ -19,10 +19,10 @@ footer() {
     echo -e "${COLOR_GREEN}${SYMBOL_DONE}${COLOR_RESET}"
   else
     echo -e "${COLOR_RED}${SYMBOL_FAIL}${COLOR_RESET}"
-    cat $TASK_LOG
+    [ -r $TASK_LOG ] && cat $TASK_LOG
   fi
 
-  rm $TASK_LOG
+  [ -r $TASK_LOG ] && rm $TASK_LOG
   return $EXIT_CODE
 }
 
