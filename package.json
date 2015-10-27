@@ -3,7 +3,7 @@
     "bourbon": "^4.2.2",
     "html-minifier": "^0.7.2",
     "http-server": "^0.8.0",
-    "imagemin": "^3.2.0",
+    "imagemin": "^3.2.2",
     "make-help": "0.0.3",
     "mustache": "^2.2.0",
     "node-sass": "^3.1.2",
