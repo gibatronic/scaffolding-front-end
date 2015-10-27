@@ -2,6 +2,7 @@
 
 .PHONY: build \
 				clean \
+				fonts \
 				help \
 				images \
 				install \
@@ -15,11 +16,15 @@
 .SILENT:
 
 # generate assets
-build: images scripts styles templates
+build: fonts images scripts styles templates
 
 # clean generated assets
 clean:
 	tasks/clean
+
+# handle the fonts
+fonts: tree
+	tasks/fonts
 
 # show some help
 help:

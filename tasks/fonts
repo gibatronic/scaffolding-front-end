@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+. tasks/library
+
+main() {
+  cp -R client/fonts/* public/fonts
+}
+
+header
+main &> $TASK_LOG
+footer

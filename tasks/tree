@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 main() {
+  mkdir -p public/fonts
   mkdir -p public/images
   mkdir -p public/scripts
   mkdir -p public/styles
