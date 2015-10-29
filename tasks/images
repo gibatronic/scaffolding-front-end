@@ -3,9 +3,9 @@
 . tasks/library
 
 main() {
-  node_modules/imagemin/cli.js client/images/* public/images
+  node_modules/imagemin-cli/cli.js client/images public/images
 }
 
 header
-main
+main &> $TASK_LOG
 footer
