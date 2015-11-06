@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+install_git() {
+  type git &> /dev/null && return
+  apt-get -qy install git
+}
+
+install_n() {
+  type n &> /dev/null && return
+  git clone https://github.com/tj/n.git
+  cd n
+  make install
+  cd ..
+}
+
+install_node() {
+  type node &> /dev/null && return
+  n -q 4.2.2
+}
+
+main() {
+  setup_locale
+  update_packages
+  install_git
+  install_n
+  install_node
+  setup_project
+}
+
+setup_locale() {
+  locale-gen en_US.UTF-8
+  update-locale LANGUAGE=en_US.UTF-8 LC_ALL=en_US.UTF-8
+  dpkg-reconfigure locales
+}
+
+setup_project() {
+  cd /vagrant
+
+  make install
+  make build
+
+  nohup tasks/watch &> /dev/null < /dev/null &
+  nohup tasks/run &> /dev/null < /dev/null &
+
+  echo 'Project built, watching and running!'
+  echo 'Access it at 127.0.0.1:3000'
+}
+
+update_packages() {
+  apt-get -qy update
+  apt-get -qy upgrade
+}
+
+main
