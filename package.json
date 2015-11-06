@@ -6,7 +6,7 @@
     "imagemin-cli": "^2.0.0",
     "make-help": "0.0.3",
     "mustache": "^2.2.0",
-    "node-sass": "^3.1.2",
+    "node-sass": "^3.4.1",
     "vigilia": "^0.1.0",
     "webpack": "^1.8.0"
   },
