@@ -23,3 +23,13 @@ make run PORT=8080
 # ask for help to see all available tasks
 make help
 ```
+
+**using Windows?**
+
+worry not! install [VirtualBox](https://www.virtualbox.org/) and [Vagrant](https://www.vagrantup.com/), then run:
+
+```shell
+vagrant up
+```
+
+this will download and run [Ubuntu](http://www.ubuntu.com/server) just for this project, so you can hack like a unix developer.
