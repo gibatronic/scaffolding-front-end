@@ -2,28 +2,45 @@ COLOR_GREEN='\033[32m'
 COLOR_RED='\033[31m'
 COLOR_RESET='\033[0m'
 COLOR_YELLOW='\033[33m'
+CURSOR_HIDE='\033[?25l'
 CURSOR_RESET='\033[999D'
+CURSOR_SHOW='\033[?25h'
+SPINNER_FRAMES=('⠋' '⠙' '⠹' '⠸' '⠼' '⠴' '⠦' '⠧' '⠇' '⠏')
+SPINNER_INDEX=0
 SYMBOL_DONE='✓'
 SYMBOL_FAIL='✖'
 
+FUNCTIONS=$(declare -F | cut -d ' ' -f 3 | grep main)
+SPINNER_LENGTH=${#SPINNER_FRAMES[@]}
 TASK_NAME=$(basename $0)
 TASK_LOG="${TASK_NAME}.log"
-FUNCTIONS=$(declare -F | cut -d ' ' -f 3 | grep main)
 
-for FUNCTION in $FUNCTIONS; do
-  FUNCTION_NAME=${FUNCTION#main_}
+abort() {
+  [ -n "$SPINNER_PID" ] && kill $SPINNER_PID &> /dev/null
+  echo -e $CURSOR_SHOW
+  exit 0
+}
 
-  echo -n "  ${TASK_NAME/_/ }"
+execute() {
+  echo -en $CURSOR_HIDE
 
-  if [ "$FUNCTION_NAME" != main ]; then
-    echo -n " ${FUNCTION_NAME/_/ }"
-  fi
+  for FUNCTION in $FUNCTIONS; do
+    header
+    spinner &
+    SPINNER_PID=$!
 
-  echo -n ' '
+    $FUNCTION &> $TASK_LOG
+    EXIT_CODE=$?
 
-  $FUNCTION &> $TASK_LOG
-  EXIT_CODE=$?
+    kill $SPINNER_PID &> /dev/null
+    wait $SPINNER_PID &> /dev/null
+    footer
+  done
 
+  echo -en $CURSOR_SHOW
+}
+
+footer() {
   echo -en $CURSOR_RESET
 
   if [ $EXIT_CODE == 0 ]; then
@@ -35,6 +52,25 @@ for FUNCTION in $FUNCTIONS; do
   fi
 
   [ -r $TASK_LOG ] && rm $TASK_LOG
-done
+}
 
-exit 0
+header() {
+  FUNCTION_NAME=${FUNCTION#main_}
+
+  echo -n "  ${TASK_NAME/_/ } "
+
+  if [ "$FUNCTION_NAME" != 'main' ]; then
+    echo -n "${FUNCTION_NAME/_/ } "
+  fi
+}
+
+spinner() {
+  while true; do
+    echo -en "${CURSOR_RESET}${COLOR_YELLOW}${SPINNER_FRAMES[$(expr $SPINNER_INDEX % $SPINNER_LENGTH)]}${COLOR_RESET}"
+    SPINNER_INDEX=$(expr $SPINNER_INDEX + 1)
+    sleep 0.05
+  done
+}
+
+trap abort SIGINT
+execute
