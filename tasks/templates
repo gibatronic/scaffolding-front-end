@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-. tasks/library
-
 main() {
   local PARTIALS=$(find client/templates/partials -name *.html | paste -s -d ':' -)
 
@@ -13,6 +11,4 @@ main() {
   node_modules/html-minifier/cli.js --collapse-whitespace --output public/index.html --remove-comments public/index.html
 }
 
-header
-main &> $TASK_LOG
-footer
+. tasks/execute

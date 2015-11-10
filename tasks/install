@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 
-. tasks/library
-
 main() {
+  if ! type npm &> /dev/null; then
+    echo 'Please, make sure you have Node and npm installed.'
+    echo 'You may get them at https://nodejs.org/'
+
+    return 1
+  fi
+
   npm install
 }
 
-header
-has npm && main &> $TASK_LOG
-footer
+. tasks/execute

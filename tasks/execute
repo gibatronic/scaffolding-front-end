@@ -1,0 +1,40 @@
+COLOR_GREEN='\033[32m'
+COLOR_RED='\033[31m'
+COLOR_RESET='\033[0m'
+COLOR_YELLOW='\033[33m'
+CURSOR_RESET='\033[999D'
+SYMBOL_DONE='✓'
+SYMBOL_FAIL='✖'
+
+TASK_NAME=$(basename $0)
+TASK_LOG="${TASK_NAME}.log"
+FUNCTIONS=$(declare -F | cut -d ' ' -f 3 | grep main)
+
+for FUNCTION in $FUNCTIONS; do
+  FUNCTION_NAME=${FUNCTION#main_}
+
+  echo -n "  ${TASK_NAME/_/ }"
+
+  if [ "$FUNCTION_NAME" != main ]; then
+    echo -n " ${FUNCTION_NAME/_/ }"
+  fi
+
+  echo -n ' '
+
+  $FUNCTION &> $TASK_LOG
+  EXIT_CODE=$?
+
+  echo -en $CURSOR_RESET
+
+  if [ $EXIT_CODE == 0 ]; then
+    echo -e "${COLOR_GREEN}${SYMBOL_DONE}${COLOR_RESET}"
+  else
+    echo -e "${COLOR_RED}${SYMBOL_FAIL}${COLOR_RESET}"
+    [ -r $TASK_LOG ] && cat $TASK_LOG
+    exit 1
+  fi
+
+  [ -r $TASK_LOG ] && rm $TASK_LOG
+done
+
+exit 0
