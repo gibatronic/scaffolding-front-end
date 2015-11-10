@@ -66,8 +66,8 @@ header() {
 
 spinner() {
   while true; do
-    echo -en "${CURSOR_RESET}${COLOR_YELLOW}${SPINNER_FRAMES[$(expr $SPINNER_INDEX % $SPINNER_LENGTH)]}${COLOR_RESET}"
-    SPINNER_INDEX=$(expr $SPINNER_INDEX + 1)
+    let 'SPINNER_INDEX=++SPINNER_INDEX % SPINNER_LENGTH'
+    echo -en "${CURSOR_RESET}${COLOR_YELLOW}${SPINNER_FRAMES[$SPINNER_INDEX]}${COLOR_RESET}"
     sleep 0.05
   done
 }
