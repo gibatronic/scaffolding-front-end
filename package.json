@@ -1,4 +1,23 @@
 {
+  "author": "Gibran Malheiros <gibatronic@gmail.com> (https://gibatronic.github.io/)",
+  "bugs": "https://github.com/rbsdev/scaffolding-front-end/issues",
+  "config": {
+    "fields": [
+      "devDependencies"
+    ],
+    "files": [
+      ".editorconfig",
+      ".gitignore",
+      "client",
+      "Makefile",
+      "tasks",
+      "Vagrantfile"
+    ]
+  },
+  "description": "Yeoman generator for front end static projects",
+  "dependencies": {
+    "yeoman-generator": "^0.21.1"
+  },
   "devDependencies": {
     "bourbon": "^4.2.2",
     "html-minifier": "^0.7.2",
@@ -10,6 +29,21 @@
     "vigilia": "^0.1.0",
     "webpack": "^1.8.0"
   },
-  "private": "true",
+  "engines": {
+    "node": ">= 4.0.0 < 5"
+  },
+  "homepage": "https://github.com/rbsdev/scaffolding-front-end",
+  "keywords": [
+    "yeoman-generator",
+    "front-end",
+    "scaffold",
+    "make"
+  ],
+  "license": "MIT",
+  "name": "generator-scaffolding-front-end",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rbsdev/scaffolding-front-end"
+  },
   "version": "0.0.9"
 }
