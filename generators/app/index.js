@@ -9,6 +9,20 @@ var copyFiles = function() {
   this.package.config.files.forEach(copyFile.bind(this));
 };
 
+var createGitignore = function() {
+  var gitignore = [
+    ".DS_Store",
+    ".vagrant",
+    "Desktop.ini",
+    "node_modules",
+    "npm-debug.log",
+    "public",
+    "Thumbs.db"
+  ];
+
+  this.fs.write(this.destinationPath('.gitignore'), gitignore.join('\n'));
+};
+
 var createPackage = function() {
   var newPackage = { };
 
@@ -33,6 +47,7 @@ module.exports = generators.Base.extend({
 
   initializing: function() {
     copyFiles.call(this);
+    createGitignore.call(this);
     createPackage.call(this);
   }
 });

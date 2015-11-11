@@ -7,7 +7,6 @@
     ],
     "files": [
       ".editorconfig",
-      ".gitignore",
       "client",
       "Makefile",
       "tasks",
