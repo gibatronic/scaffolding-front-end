@@ -1,36 +1,36 @@
 # front end scaffolding
 
-starting a new static project? save time using this marvelous scaffolding!
+Starting a new static project? Save time using this marvelous scaffolding!
 
-after cloning this repository, run `make install` to grab all dependencies.
+## Instalation
+
+1. Get [Yeoman](http://yeoman.io/) and other required tools:
+   ```shell
+   npm install --global yo bower grunt-cli gulp
+   ```
+
+2. Grab the generator:
+   ```shell
+   npm install --global generator-scaffolding-front-end
+   ```
+
+3. Create and enter your project's directory:
+   ```shell
+   mkdir my-awesome-project
+   cd my-awesome-project
+   ```
+
+4. Generate the scaffolding:
+   ```shell
+   yo scaffolding-front-end
+   ```
+
+Voilà! You're ready to start hacking.
+
+## Usage
+
+After getting a fresh copy run `make install` to grab all dependencies.
 <br>
-then run the following commands, each in a seperate terminal:
+Then check out available tasks with `make help`.
 
-```shell
-# watch over file changes
-make watch
-
-# start a web server
-make run
-```
-
-check out available tasks with:
-
-```shell
-make help
-```
-
-**using Windows?**
-
-worry not! install [VirtualBox](https://www.virtualbox.org/) and [Vagrant](https://www.vagrantup.com/), then run:
-
-```shell
-vagrant up
-```
-
-this will download and run [Ubuntu](http://www.ubuntu.com/server) just for this project, so you can hack like a unix developer, then you can enter Ubuntu to start playing with the project:
-
-```shell
-vagrant ssh
-cd /vagrant
-```
+**Using Windows?** [Check this guide](README-WINDOWS.md).
