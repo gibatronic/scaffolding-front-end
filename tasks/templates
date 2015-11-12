@@ -2,13 +2,18 @@
 
 main() {
   local PARTIALS=$(find client/templates/partials -name *.html | paste -s -d ':' -)
+  local TEMPLATES=$(find client/templates -maxdepth 1 -name *.html)
 
-  if [ ! -z "$PARTIALS" ]; then
-    PARTIALS="-p ${PARTIALS/:/ -p }"
-  fi
+  for TEMPLATE in $TEMPLATES; do
+    TEMPLATE=$(basename $TEMPLATE)
 
-  node_modules/mustache/bin/mustache $PARTIALS package.json client/templates/main.html > public/index.html
-  node_modules/html-minifier/cli.js --collapse-whitespace --output public/index.html --remove-comments public/index.html
+    if [ ! -z "$PARTIALS" ]; then
+      PARTIALS="-p ${PARTIALS/:/ -p }"
+    fi
+
+    node_modules/mustache/bin/mustache $PARTIALS package.json "client/templates/${TEMPLATE}" > "public/${TEMPLATE}"
+    node_modules/html-minifier/cli.js --collapse-whitespace --output "public/${TEMPLATE}" --remove-comments "public/${TEMPLATE}"
+  done
 }
 
 . tasks/execute
