@@ -1,6 +1,8 @@
 # front end scaffolding
 
 Starting a new static project? Save time using this marvelous scaffolding!
+<br>
+It uses `make` as task runner and it's ready for above and below the fold styles.
 
 ## Instalation
 
