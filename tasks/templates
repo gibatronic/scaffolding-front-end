@@ -12,7 +12,7 @@ main() {
     TEMPLATE=$(basename $TEMPLATE)
 
     if [ ! -z "$PARTIALS" ]; then
-      PARTIALS="-p ${PARTIALS/:/ -p }"
+      PARTIALS="-p ${PARTIALS//:/ -p }"
     fi
 
     printf "$DATA" $SHASUM_SCRIPT $SHASUM_STYLE_MAJOR $SHASUM_STYLE_MINOR | node_modules/mustache/bin/mustache $PARTIALS - "client/templates/${TEMPLATE}" > "public/${TEMPLATE}"
