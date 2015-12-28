@@ -10,15 +10,15 @@
     <meta name="viewport" content="initial-scale=1, width=device-width">
 
     <link href="images/icon.png" rel="icon" sizes="32x32" type="image/png">
-    <link href="styles/major.css" rel="stylesheet">
+    <link href="styles/major.css" integrity="{{{shasum.style.major}}}" rel="stylesheet">
 
-    <noscript>
-      <link href="styles/minor.css" rel="stylesheet">
+    <noscript id="styles-minor">
+      <link href="styles/minor.css" integrity="{{{shasum.style.minor}}}" rel="stylesheet">
     </noscript>
   </head>
   <body>
     {{> header.html}}
 
-    <script src="scripts/main.js"></script>
+    <script integrity="{{{shasum.script}}}" src="scripts/main.js"></script>
   </body>
 </html>
