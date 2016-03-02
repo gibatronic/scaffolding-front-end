@@ -15,18 +15,18 @@
   },
   "description": "Yeoman generator for front end static projects",
   "dependencies": {
-    "yeoman-generator": "^0.21.1"
+    "yeoman-generator": "^0.22.5"
   },
   "devDependencies": {
-    "bourbon": "^4.2.2",
-    "html-minifier": "^0.7.2",
-    "http-server": "^0.8.0",
-    "imagemin-cli": "^2.0.0",
-    "make-help": "0.0.3",
-    "mustache": "^2.2.0",
-    "node-sass": "^3.4.1",
+    "bourbon": "^4.2.6",
+    "html-minifier": "^1.2.0",
+    "http-server": "^0.9.0",
+    "imagemin-cli": "^2.1.0",
+    "make-help": "^1.0.0",
+    "mustache": "^2.2.1",
+    "node-sass": "^3.4.2",
     "vigilia": "^0.1.0",
-    "webpack": "^1.8.0"
+    "webpack": "^1.12.14"
   },
   "engines": {
     "node": ">= 4.0.0 < 5"
