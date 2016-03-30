@@ -1,19 +1,27 @@
 #!/usr/bin/env bash
 
 main() {
-  local PARTIALS=$(find client/templates/partials -name *.html | paste -s -d ':' -)
+  local DATA='{"shasum": {"script": "%s", "style": {"major": "%s","minor": "%s"}}}'
+  local PARTIALS=$(find client/templates/partials -name '*.html' | paste -s -d ':' -)
+  local SHASUM_SCRIPT=$(shasum 'scripts/main.js')
+  local SHASUM_STYLE_MAJOR=$(shasum 'styles/major.css')
+  local SHASUM_STYLE_MINOR=$(shasum 'styles/minor.css')
   local TEMPLATES=$(find client/templates -maxdepth 1 -name *.html)
 
   for TEMPLATE in $TEMPLATES; do
     TEMPLATE=$(basename $TEMPLATE)
 
     if [ ! -z "$PARTIALS" ]; then
-      PARTIALS="-p ${PARTIALS/:/ -p }"
+      PARTIALS="-p ${PARTIALS//:/ -p }"
     fi
 
-    node_modules/mustache/bin/mustache $PARTIALS package.json "client/templates/${TEMPLATE}" > "public/${TEMPLATE}"
+    printf "$DATA" $SHASUM_SCRIPT $SHASUM_STYLE_MAJOR $SHASUM_STYLE_MINOR | node_modules/mustache/bin/mustache $PARTIALS - "client/templates/${TEMPLATE}" > "public/${TEMPLATE}"
     node_modules/html-minifier/cli.js --collapse-whitespace --output "public/${TEMPLATE}" --remove-comments "public/${TEMPLATE}"
   done
+}
+
+shasum() {
+  echo "sha384-$(cat "public/${1}" | openssl dgst -sha384 -binary | openssl enc -base64 -A)"
 }
 
 . tasks/execute
