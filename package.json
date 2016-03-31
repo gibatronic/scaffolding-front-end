@@ -1,6 +1,6 @@
 {
   "author": "Gibran Malheiros <gibatronic@gmail.com> (https://gibatronic.github.io/)",
-  "bugs": "https://github.com/rbsdev/scaffolding-front-end/issues",
+  "bugs": "https://github.com/gibatronic/scaffolding-front-end/issues",
   "config": {
     "fields": [
       "devDependencies"
@@ -31,7 +31,7 @@
   "engines": {
     "node": ">= 4.0.0 < 5"
   },
-  "homepage": "https://github.com/rbsdev/scaffolding-front-end",
+  "homepage": "https://github.com/gibatronic/scaffolding-front-end#readme",
   "keywords": [
     "yeoman-generator",
     "front-end",
@@ -42,7 +42,7 @@
   "name": "generator-scaffolding-front-end",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rbsdev/scaffolding-front-end"
+    "url": "https://github.com/gibatronic/scaffolding-front-end"
   },
   "version": "1.1.2"
 }
