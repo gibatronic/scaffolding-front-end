@@ -42,6 +42,8 @@ execute() {
     fi
 
     footer
+
+    [ "$EXIT_CODE" != 0 ] && break
   done
 
   terminal && echo -en $CURSOR_SHOW
