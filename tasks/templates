@@ -16,7 +16,9 @@ main() {
     fi
 
     printf "$DATA" $SHASUM_SCRIPT $SHASUM_STYLE_MAJOR $SHASUM_STYLE_MINOR | node_modules/mustache/bin/mustache $PARTIALS - "client/templates/${TEMPLATE}" > "public/${TEMPLATE}"
-    node_modules/html-minifier/cli.js --collapse-whitespace --output "public/${TEMPLATE}" --remove-comments "public/${TEMPLATE}"
+    node_modules/html-minifier/cli.js --collapse-whitespace --remove-comments "public/${TEMPLATE}" > "public/${TEMPLATE}.buffer"
+    rm "public/${TEMPLATE}"
+    mv "public/${TEMPLATE}.buffer" "public/${TEMPLATE}"
   done
 }
 
