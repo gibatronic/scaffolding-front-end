@@ -29,7 +29,8 @@
     "webpack": "^1.12.14"
   },
   "engines": {
-    "node": ">= 4.0.0 < 5"
+    "node": ">=4.0.0",
+    "npm": ">=2.0.0"
   },
   "homepage": "https://github.com/gibatronic/scaffolding-front-end#readme",
   "keywords": [
