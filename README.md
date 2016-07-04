@@ -4,6 +4,13 @@ Starting a new static project? Save time using this marvelous scaffolding!
 <br>
 It uses `make` as task runner and it's ready for above and below the fold styles.
 
+**Project stack:**
+
+* [Make](https://www.gnu.org/software/make/) as a task runner.
+* [SASS](http://sass-lang.com/) and [Bourbon](http://bourbon.io/), with [above and below the fold](https://en.wikipedia.org/wiki/Above_the_fold#In_web_design) styles.
+* [webpack](https://webpack.github.io/) to sew all js modules together.
+* [Mustache](https://mustache.github.io/) for gluing partials together.
+
 ## Instalation
 
 1. Get [Yeoman](http://yeoman.io/) and other required tools:
