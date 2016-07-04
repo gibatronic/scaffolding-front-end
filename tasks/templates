@@ -15,8 +15,8 @@ main() {
       PARTIALS="-p ${PARTIALS//:/ -p }"
     fi
 
-    printf "$DATA" $SHASUM_SCRIPT $SHASUM_STYLE_MAJOR $SHASUM_STYLE_MINOR | node_modules/mustache/bin/mustache $PARTIALS - "client/templates/${TEMPLATE}" > "public/${TEMPLATE}"
-    node_modules/html-minifier/cli.js --collapse-whitespace --remove-comments "public/${TEMPLATE}" > "public/${TEMPLATE}.buffer"
+    printf "$DATA" $SHASUM_SCRIPT $SHASUM_STYLE_MAJOR $SHASUM_STYLE_MINOR | node_modules/.bin/mustache $PARTIALS - "client/templates/${TEMPLATE}" > "public/${TEMPLATE}"
+    node_modules/.bin/html-minifier --collapse-whitespace --remove-comments "public/${TEMPLATE}" > "public/${TEMPLATE}.buffer"
     rm "public/${TEMPLATE}"
     mv "public/${TEMPLATE}.buffer" "public/${TEMPLATE}"
   done

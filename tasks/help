@@ -7,5 +7,5 @@ echo '    make run [PORT=<number>]'
 echo '    make run-and-watch [PORT=<number>]'
 echo ''
 echo '  Targets:'
-node_modules/make-help/bin/make-help -p 4 Makefile
+node_modules/.bin/make-help -p 4 Makefile
 echo ''

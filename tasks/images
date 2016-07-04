@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 main() {
-  node_modules/imagemin-cli/cli.js client/images public/images
+  node_modules/.bin/imagemin client/images public/images
 }
 
 . tasks/mixins/execute

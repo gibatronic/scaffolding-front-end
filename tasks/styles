@@ -9,7 +9,7 @@ main_minor() {
 }
 
 sass() {
-  node_modules/node-sass/bin/node-sass --include-path node_modules/bourbon/app/assets/stylesheets --output public/styles --output-style compressed "client/styles/${1}.scss" "public/styles/${1}.css"
+  node_modules/.bin/node-sass --include-path node_modules/bourbon/app/assets/stylesheets --output public/styles --output-style compressed "client/styles/${1}.scss" "public/styles/${1}.css"
 }
 
 . tasks/mixins/execute

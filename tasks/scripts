@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 main() {
-  node_modules/webpack/bin/webpack.js --bail -p client/scripts/main.js public/scripts/main.js
+  node_modules/.bin/webpack --bail -p client/scripts/main.js public/scripts/main.js
 }
 
 . tasks/mixins/execute
