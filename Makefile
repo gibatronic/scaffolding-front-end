@@ -6,6 +6,7 @@
 				images \
 				install \
 				run \
+				run-and-watch \
 				scripts \
 				styles \
 				templates \
@@ -36,6 +37,10 @@ install:
 # start the web server
 run: build
 	tasks/run
+
+# start both run and watch tasks
+run-and-watch: build
+	tasks/run-and-watch
 
 # generate scripts
 scripts: tree

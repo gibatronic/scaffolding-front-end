@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+. tasks/mixins/colors
+
+CURSOR_HIDE='\033[?25l'
+CURSOR_SHOW='\033[?25h'
+
+abort() {
+  [ -n "$RUN_PID" ] && kill $RUN_PID &> /dev/null
+  [ -n "$WATCH_PID" ] && kill $WATCH_PID &> /dev/null
+
+  echo -e $CURSOR_SHOW
+
+  exit 0
+}
+
+prefix() {
+  local LABEL=$1
+
+  while read LINE; do
+    echo -e "$COLOR_RESET$LABEL $LINE"
+  done
+}
+
+run_and_watch() {
+  trap abort SIGINT
+  echo -en $CURSOR_HIDE
+
+  tasks/run | prefix '    run' &
+  RUN_PID=$!
+
+  tasks/watch | prefix '  watch' &
+  WATCH_PID=$!
+
+  wait $RUN_PID
+  wait $WATCH_PID
+
+  echo -en $CURSOR_SHOW
+}
+
+run_and_watch
