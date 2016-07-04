@@ -6,4 +6,4 @@ main() {
   mkdir -p public/styles
 }
 
-. tasks/execute
+. tasks/mixins/execute

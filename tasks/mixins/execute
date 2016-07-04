@@ -1,7 +1,7 @@
-COLOR_GREEN='\033[32m'
-COLOR_RED='\033[31m'
-COLOR_RESET='\033[0m'
-COLOR_YELLOW='\033[33m'
+#!/usr/bin/env bash
+
+. tasks/mixins/colors
+
 CURSOR_HIDE='\033[?25l'
 CURSOR_RESET='\033[999D'
 CURSOR_SHOW='\033[?25h'

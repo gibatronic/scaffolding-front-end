@@ -11,4 +11,4 @@ main() {
   npm install
 }
 
-. tasks/execute
+. tasks/mixins/execute

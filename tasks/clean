@@ -5,4 +5,4 @@ main() {
   rm -f npm-debug.log
 }
 
-. tasks/execute
+. tasks/mixins/execute

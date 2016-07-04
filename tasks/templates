@@ -26,4 +26,4 @@ shasum() {
   echo "sha384-$(cat "public/${1}" | openssl dgst -sha384 -binary | openssl enc -base64 -A)"
 }
 
-. tasks/execute
+. tasks/mixins/execute
