@@ -9,13 +9,14 @@ main() {
   local TEMPLATES=$(find client/templates -maxdepth 1 -name *.html)
 
   for TEMPLATE in $TEMPLATES; do
+    FLAGS=
     TEMPLATE=$(basename $TEMPLATE)
 
     if [ ! -z "$PARTIALS" ]; then
-      PARTIALS="-p ${PARTIALS//:/ -p }"
+      FLAGS="-p ${PARTIALS//:/ -p }"
     fi
 
-    printf "$DATA" $SHASUM_SCRIPT $SHASUM_STYLE_MAJOR $SHASUM_STYLE_MINOR | node_modules/.bin/mustache $PARTIALS - "client/templates/${TEMPLATE}" > "public/${TEMPLATE}"
+    printf "$DATA" $SHASUM_SCRIPT $SHASUM_STYLE_MAJOR $SHASUM_STYLE_MINOR | node_modules/.bin/mustache $FLAGS - "client/templates/${TEMPLATE}" > "public/${TEMPLATE}"
     node_modules/.bin/html-minifier --collapse-whitespace --remove-comments "public/${TEMPLATE}" > "public/${TEMPLATE}.buffer"
     rm "public/${TEMPLATE}"
     mv "public/${TEMPLATE}.buffer" "public/${TEMPLATE}"
